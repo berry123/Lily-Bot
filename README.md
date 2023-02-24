@@ -1,4 +1,4 @@
-# Lily-Bot
+# Flower-Bots
 This GITHUB as well as the one on YouTube, Instructables, Hackster and Rose-Hulman (https://wordpress.rose-hulman.edu/berry123) will document my guidebook for members of academia to use open-source hardware for service, education, and research. It will describe the creation of an open-source mobile robot platform with the flexiblity and modularity for modification based upon experience level, educational, outreach, or research goals.
 
 https://www.oshwa.org/2022/06/15/congratulations-to-the-open-hardware-trailblazers/
