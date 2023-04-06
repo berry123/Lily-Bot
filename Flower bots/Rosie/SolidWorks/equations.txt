@@ -1,0 +1,9 @@
+﻿"Diameter_Daisy"= 11.75in'Outside diameter of base
+"D1@Sketch1"="Diameter_Daisy"
+"D3@Sketch2"="Diameter_Daisy"/2-8.467mm
+"D2@Sketch27"="Diameter_Daisy"/2-45mm
+"D1@Sketch19"="Diameter_Daisy"/2-8mm
+"Number_of_Holes" = 12
+"D1@Wires holes pattern"="Number_of_Holes"
+"D1@Full_Spiral_Pattern_N"="Number_of_Holes"
+"D5@Sketch19"=360/"Number_of_Holes"/2*3
