@@ -10,5 +10,6 @@ Carlotta Berry is a professor and Dr. Lawrence J. Giacoletto Endowed Chair for E
 
 ![oshw_facts](https://user-images.githubusercontent.com/6740330/236703928-eb79c91e-8382-4fec-a409-e71f5dbb2295.svg)
 
+This project is certified open hardware.
 
-<img width="169" alt="Licenses" src="https://user-images.githubusercontent.com/6740330/236703930-e001da98-a723-417a-b3a4-802e5926105e.PNG">
+![OSHW Certified](https://user-images.githubusercontent.com/6740330/236956313-80035332-3d7c-4f10-8be3-2a8e9b46aa19.jpg)
