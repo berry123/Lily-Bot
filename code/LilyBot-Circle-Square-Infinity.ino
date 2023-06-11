@@ -120,26 +120,24 @@ void square(int speed) {
 }
 
 // Move the robot in a circle
-void circle(int speedA, int speedB) {
-  slightPivot(RIGHT, speedA, speedB);
-  delay(2000);
+void circle(int direction, int speedA, int speedB) {
+  if (direction == LEFT) {
+    slightPivot(LEFT, speedA, speedB);
+  } else 
+  // default is clockwise 
+  {
+    slightPivot(RIGHT, speedA, speedB);
+  }
 }
 
 // Move the robot in a figure-eight
-void infinity(int speed) {
-  for (int i = 0; i < 2; i++) {
-    move(speed);
-    delay(2000);
-
-    slightPivot(RIGHT, 50, 127 + 127);
-    delay(3500);
-
-    move(speed);
-    delay(2000);
-
-    slightPivot(LEFT, 50, 127 + 127);
-    delay(3500);
-  }
+void infinity() {
+  circle(RIGHT,185,100);
+  delay(4500); 
+  stopRobot();
+  delay(500);
+  circle(LEFT,185,100); 
+  delay(5500);
   stopRobot();
   delay(1000);
 }
@@ -167,6 +165,6 @@ void loop() {
   square(128);
   stopRobot(); 
   delay(1000); 
-  infinity(128); 
+  infinity(); 
   delay(1000);
 }
