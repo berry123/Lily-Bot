@@ -5,10 +5,12 @@
  
  This program is written to follow a path defined by using the pythagorean theorem. Made to be used on the LilyBot without any sensors, 
  so it will follow the calculated path, regardless of its actual position or the presence of obstacles. 
+
+ 
  */
 
 
-// Offsets are used to adjust speed of each motor in the case of speed differences between wheels
+// Offsets can be used to adjust speed of each motor in the case of speed differences between wheels
 const int offsetA = 0;
 const int offsetB = 0;
 
