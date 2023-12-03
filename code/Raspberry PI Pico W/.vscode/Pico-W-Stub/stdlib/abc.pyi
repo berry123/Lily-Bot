@@ -1,42 +1,50 @@
-# This file is from https://github.com/python/typeshed as of commit sha b6d28acb2368cdd8c87554e01e22e134061997d6
-# Copyright github.com/python/typeshed project contributors
-
 import sys
-from _typeshed import Self, SupportsWrite
 from collections.abc import Callable
-from typing import Any, Generic, TypeVar, Optional, Literal
+from typing import Any, TypeVar
+
+import _typeshed
+from _typeshed import SupportsWrite
+from typing_extensions import Concatenate, Literal, ParamSpec
 
 _T = TypeVar("_T")
 _R_co = TypeVar("_R_co", covariant=True)
 _FuncT = TypeVar("_FuncT", bound=Callable[..., Any])
+_P = ParamSpec("_P")
 
 # These definitions have special processing in mypy
 class ABCMeta(type):
     __abstractmethods__: frozenset[str]
     if sys.version_info >= (3, 11):
         def __new__(
-            __mcls: type[Self], __name: str, __bases: tuple[type, ...], __namespace: dict[str, Any], **kwargs: Any
-        ) -> Self: ...
+            __mcls: type[_typeshed.Self],
+            __name: str,
+            __bases: tuple[type, ...],
+            __namespace: dict[str, Any],
+            **kwargs: Any
+        ) -> _typeshed.Self: ...
     else:
-        # pyright doesn't like the first parameter being called mcls, hence the `pyright: ignore`
         def __new__(
-            mcls: type[Self], name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs: Any  # pyright: ignore
-        ) -> Self: ...
+            mcls: type[_typeshed.Self],
+            name: str,
+            bases: tuple[type, ...],
+            namespace: dict[str, Any],
+            **kwargs: Any
+        ) -> _typeshed.Self: ...
 
-    def __instancecheck__(cls: ABCMeta, instance: Any) -> Any: ...
-    def __subclasscheck__(cls: ABCMeta, subclass: Any) -> Any: ...
-    def _dump_registry(cls: ABCMeta, file: Optional[SupportsWrite[str]] = ...) -> None: ...
+    def __instancecheck__(cls: ABCMeta, instance: Any) -> bool: ...
+    def __subclasscheck__(cls: ABCMeta, subclass: type) -> bool: ...
+    def _dump_registry(cls: ABCMeta, file: SupportsWrite[str] | None = None) -> None: ...
     def register(cls: ABCMeta, subclass: type[_T]) -> type[_T]: ...
 
 def abstractmethod(funcobj: _FuncT) -> _FuncT: ...
 
-class abstractclassmethod(classmethod[_R_co], Generic[_R_co]):
+class abstractclassmethod(classmethod[_T, _P, _R_co]):  # type: ignore
     __isabstractmethod__: Literal[True]
-    def __init__(self: abstractclassmethod[_R_co], callable: Callable[..., _R_co]) -> None: ...
+    def __init__(self, callable: Callable[Concatenate[type[_T], _P], _R_co]) -> None: ...  # type: ignore
 
-class abstractstaticmethod(staticmethod[_R_co], Generic[_R_co]):
+class abstractstaticmethod(staticmethod[_P, _R_co]):  # type: ignore
     __isabstractmethod__: Literal[True]
-    def __init__(self, callable: Callable[..., _R_co]) -> None: ...
+    def __init__(self, callable: Callable[_P, _R_co]) -> None: ...  # type: ignore
 
 class abstractproperty(property):
     __isabstractmethod__: Literal[True]
